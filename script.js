@@ -25,14 +25,21 @@ function clickCircle() {
   if (circleGuess === pickedColor) {
     resultMessage.textContent = "You Win!";
     resetButton.textContent = "Play again";
-    circles.forEach(function(circle) { 
-      circle.style.backgroundColor = pickedColor;
-    });
+    changeAllCirclesColor(pickedColor);
     banner.style.backgroundColor = pickedColor; 
   } else {
     this.style.backgroundColor = defaultColour;
-    resultMessage.textContent = "Try again";
+    resultMessage.textContent = "Correct color was: " + pickedColor; // Show the correct color
+    setTimeout(function() { // Hide the correct color after a delay
+      resultMessage.textContent = "Try again";
+    }, 2000); // 2000 milliseconds = 2 seconds
   }
+}
+
+function changeAllCirclesColor(color) {
+  circles.forEach(function(circle) { 
+    circle.style.backgroundColor = color;
+  });
 }
 
 function reset() {
