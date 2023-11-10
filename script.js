@@ -22,19 +22,19 @@ resetButton.addEventListener("click", function() {
 
 function clickCircle() {
   var circleGuess = this.style.backgroundColor.replaceAll(' ', ''); 
-  if (circleGuess == pickedColor) {
+  if (circleGuess === pickedColor) {
     resultMessage.textContent = "You Win!";
     resetButton.textContent = "Play again";
-    changeAllCirclesColor(pickedColor);
-    banner.style.backgroundColor = pickedColor; 
+    circles.forEach(function(circle) { // Corrected misspelling of 'function'
+      circle.style.backgroundColor = pickedColor;
+    });
+    banner.style.backgroundColor = pickedColor; // Corrected camelCase for backgroundColor
   } else {
     this.style.backgroundColor = defaultColour;
-    resultMessage.textContent = "Correct color was: " + pickedColor; // Show the correct color
-    setTimeout(function() { // Hide the correct color after a delay
-      resultMessage.textContent = "Try again";
-    }, 2000); // 2000 milliseconds = 2 seconds
+    resultMessage.textContent = "Try again";
   }
 }
+
 
 function changeAllCirclesColor(color) {
   circles.forEach(function(circle) { 
