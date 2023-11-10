@@ -22,7 +22,7 @@ resetButton.addEventListener("click", function() {
 
 function clickCircle() {
   var circleGuess = this.style.backgroundColor.replaceAll(' ', ''); 
-  if (circleGuess === pickedColor) {
+  if (circleGuess == pickedColor) {
     resultMessage.textContent = "You Win!";
     resetButton.textContent = "Play again";
     changeAllCirclesColor(pickedColor);
